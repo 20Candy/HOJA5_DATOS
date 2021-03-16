@@ -31,15 +31,24 @@ def simulador(procesos):
         p= proceso(instrucciones, memoria, numero)
         cola_new.enqueue(p)
         print("Proceso " + str(p.getNumero()) + " ,memoria: " + str(p.getMemoria()) + " , instrucciones: " + str(p.getInstrucciones()))
+        if(i == procesos+1):
+            cola_new.enqueue(p)
 
     print("Genero la cantidad de procesos:" + str(procesos)) 
 
     """--------------------------------------------------------------------------------------"""    
 
+    conta = 0
     while(cola_new.isEmpty()==False):
-        pro= cola_new.dequeue()
-        new(pro)
-        env.run()    
+        conta = conta + 1
+        
+        if(conta == procesos+1):
+            print("ya esta terminado.")
+        else:
+            pro= cola_new.dequeue()
+            new(pro)
+            env.run()
+            
 
 
 """----------------------------------------------------------------------------------------------------"""
